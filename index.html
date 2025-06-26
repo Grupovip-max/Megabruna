@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BRUNA - Viste tu actitud</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(160deg, #0a0a23, #0f0fff);
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 6px #00e0ff;
+      letter-spacing: 2px;
+    }
+
+    .cart-icon {
+      font-size: 1.8rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 8px #00e0ff;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: #a0cfff;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin: 40px 0 20px;
+      text-align: center;
+      color: #00e0ff;
+      text-shadow: 0 0 6px #00c0ff;
+      letter-spacing: 1.2px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 8px #00e0ff;
+      text-align: center;
+      padding-bottom: 10px;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffff;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid #00e0ff;
+      background: #003366;
+    }
+
+    .product-card h3 {
+      font-size: 1rem;
+      margin: 10px 0 5px;
+      color: #b0e9ff;
+      font-weight: 600;
+    }
+
+    .product-card p {
+      font-weight: bold;
+      color: #00bfff;
+      margin-bottom: 6px;
+    }
+
+    .btn-whatsapp {
+      display: inline-block;
+      background-color: #25d366;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin: 6px 0 12px;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #128c4a;
+    }
+
+    .plus-size {
+      background: #001233;
+      padding: 30px 15px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #007fff;
+      margin-bottom: 60px;
+    }
+
+    .plus-size p {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      font-weight: 500;
+      color: #a0d1ff;
+      text-shadow: 0 0 4px #0099ff;
+    }
+
+    .contact-section, .footer {
+      padding: 40px 20px;
+      background-color: #000f33;
+      text-align: center;
+      color: #99ccff;
+      user-select: none;
+    }
+
+    .footer {
+      background: #000a1a;
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #00bfff;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: #00ffff;
+    }
+
+    .newsletter input[type="email"] {
+      padding: 10px;
+      width: 280px;
+      max-width: 90%;
+      margin: 10px 0;
+      border: 1px solid #007fff;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .newsletter button {
+      background-color: #00bfff;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .newsletter button:hover {
+      background-color: #008fcc;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+      z-index: 999;
+      user-select: none;
+    }
+
+    @media screen and (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">BRUNA</div>
+    <div class="cart-icon">🛒</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Viste tu actitud con BRUNA</h1>
+      <p>Moda urbana para jóvenes con estilo venezolano.</p>
+    </section>
+
+    <!-- Aquí se insertan las categorías -->
+    <div id="products-container"></div>
+
+    <section class="plus-size">
+      <h2 class="section-title">Zona Especial – Tallas Grandes</h2>
+      <p>“La talla no define tu flow. Aquí encuentras lo que sí te representa.”</p>
+      <div class="product-grid" id="plus-size-products"></div>
+    </section>
+
+    <section class="contact-section">
+      <h2 class="section-title">Contáctanos</h2>
+      <p>¿Tienes preguntas o quieres ser parte de nuestra comunidad?</p>
+      <form class="newsletter" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+        <input type="email" placeholder="Tu correo electrónico" required />
+        <br />
+        <button type="submit">Suscribirme</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Síguenos en redes:</p>
+    <a href="#" target="_blank" rel="noopener">Instagram</a>
+    <a href="#" target="_blank" rel="noopener">TikTok</a>
+    <a href="#" target="_blank" rel="noopener">Facebook</a>
+    <p>© 2025 BRUNA. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Botón WhatsApp -->
+  <a href="https://wa.me/584123456789?text=Hola%20quiero%20comprar%20en%20BRUNA" 
+     class="whatsapp-float" target="_blank" title="Contáctanos en WhatsApp">📱</a>
+
+  <script>
+    const exchangeRate = 25; // 1 USD = 25 VES, cambia esto si quieres
+
+    const categories = [
+      { id: 'camisetas', title: 'Camisetas Oversize', images: [
+        "https://images.unsplash.com/photo-1602810311459-5b7e15753309?auto=format&fit=crop&w=400&q=80",
+        "https://cdn.pixabay.com/photo/2020/01/25/09/27/fashion-4790899_1280.jpg",
+        "https://images.unsplash.com/photo-1611078489935-5ad0f2bdcbda?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1611066526304-4dfc70b5bc79?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1622737131047-2db6be6c5e5b?auto=format&fit=crop&w=400&q=80"
+      ] },
+      { id: 'zapatillas', title: 'Zapatillas Urbanas', images: [
+        "https://images.unsplash.com/photo-1596464716129-355eab08c1c3?auto=format&fit=crop&w=400&q=80",
+        "https://cdn.pixabay.com/photo/2016/11/29/03/53/running-shoes-1868419_1280.jpg",
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+      ] },
+      { id: 'conjuntos', title: 'Conjuntos Streetwear', images: [
+        "https://images.unsplash.com/photo-1520975691282-78d4396fdf55?auto=format&fit=crop&w=400&q=80",
+        "https://cdn.pixabay.com/photo/2017/08/01/08/29/girl-2563495_1280.jpg",
+        "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1503342452485-86a8c0c7f2e4?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1520976406724-6b4de380e434?auto=format&fit=crop&w=400&q=80"
+      ] },
+      { id: 'accesorios', title: 'Accesorios Juveniles', images: [
+        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+        "https://cdn.pixabay.com/photo/2015/09/05/21/51/earrings-927705_1280.jpg",
+        "https://images.unsplash.com/photo-1548092372-1fb6e02090a7?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1539883372910-0a74c69dbba1?auto=format&fit=crop&w=400&q=80",
+        "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80"
+      ] }
+    ];
+
+    // Plus size images (mix of clothing)
+    const plusSizeImages = [
+      "https://images.unsplash.com/photo-1562158071-f87e5ed25f5a?auto=format&fit=crop&w=400&q=80",
+      "https://cdn.pixabay.com/photo/2017/06/01/10/37/plus-size-2366198_1280.jpg",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=400&q=80"
+    ];
+
+    function createProducts(sectionId, baseName, images) {
+      const sectionContainer = document.getElementById(sectionId);
+      for(let i = 1; i <= 25; i++) {
+        const priceUSD = 15 + i;
+        const priceVES = priceUSD * exchangeRate;
+        const productName = `${baseName} ${i}`;
+        const imgSrc = images[i % images.length];
+        const whatsappNumber = "584123456789"; // Cambia por tu número real
+
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${imgSrc}" alt="${productName}" 
+            onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=BRUNA+Producto';" />
+          <h3>${productName}</h3>
+          <p>$${priceUSD.toFixed(2)} USD / Bs. ${priceVES.toLocaleString('es-VE')}</p>
+          <a href="https://wa.me/${whatsappNumber}?text=Hola%20quiero%20comprar%20el%20producto%20${encodeURIComponent(productName)}%20en%20BRUNA" 
+             target="_blank" class="btn-whatsapp">📱 Comprar por WhatsApp</a>
+        `;
+        sectionContainer.appendChild(card);
+      }
+    }
+
+    // Crear categorías en #products-container
+    const container = document.getElementById('products-container');
+    categories.forEach(cat => {
+      const section = document.createElement('section');
+      section.innerHTML = `
+        <h2 class="section-title">${cat.title}</h2>
+        <div class="product-grid" id="${cat.id}-products"></div>
+      `;
+      container.appendChild(section);
+      createProducts(`${cat.id}-products`, cat.title, cat.images);
+    });
+
+    // Productos tallas grandes
+    createProducts('plus-size-products', 'Talla Grande', plusSizeImages);
+
+  </script>
+</body>
+</html>
